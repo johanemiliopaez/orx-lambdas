@@ -1,0 +1,3 @@
+# Las dependencias (openai) estarán en una AWS Lambda Layer
+# No es necesario incluir dependencias aquí si se usa una layer
+
