@@ -2,7 +2,16 @@ import json
 import re
 import os
 from typing import Dict, Any, List
-from openai import OpenAI
+
+# AWS Lambda automáticamente agrega las capas al sys.path cuando están asociadas
+# Las capas se montan en /opt/python/lib/python3.x/site-packages/ y se agregan automáticamente
+try:
+    from openai import OpenAI
+except ImportError as e:
+    raise ImportError(
+        "No se pudo importar openai. Asegúrate de que la Lambda Layer con openai esté configurada "
+        "y asociada a la función Lambda, o que openai esté instalado en el entorno local. Error: " + str(e)
+    )
 
 # Importar datos y funciones de extract_n2
 from extract_n2 import RIESGOS_ORX_DATA, normalize_n1_name
