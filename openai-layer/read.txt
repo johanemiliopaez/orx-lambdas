@@ -1,0 +1,4 @@
+
+docker build -t openai-layer .
+
+docker run --rm -v "$(pwd)":/output --entrypoint /bin/bash openai-layer -c "cp /openai_layer.zip /output/"
